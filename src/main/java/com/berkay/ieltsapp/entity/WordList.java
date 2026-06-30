@@ -9,20 +9,21 @@ public class WordList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
-
+    private String word;
     private String exampleSentence;
     private String meaning;
     private String level;
     public WordList(){
 
     }
-    public WordList(Long id,String meaning,String Level,String example){
+    public WordList(Long id,String meaning,String Level,String example,String word){
         this.Id=id;
         this.meaning=meaning;
         this.level=level;
         this.exampleSentence=example;
+        this.word=word;
     }
-
+    public String getWord(){return word; }
     public long getId() {return Id;}
     public String getExampleSentence() {return exampleSentence;}
     public String meaning() {return meaning;}
@@ -31,7 +32,7 @@ public class WordList {
     public void setExampleSentence(String ex){this.exampleSentence=ex;}
     public void setMeaning(String mean){this.meaning=mean;}
     public void setLevel(String diff){this.level=diff;}
-
+    public void setWord(String word){this.word=word;}
 
 
 

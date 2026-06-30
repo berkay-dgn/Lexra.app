@@ -17,15 +17,15 @@ public class UserController {
         return userService.showList();
     }
     @GetMapping("/{ID}")
-    public AppUser findCustomer(@PathVariable long ID){
+    public AppUser findCustomer(@PathVariable Long ID){
         return userService.findUser(ID);
     }
     @GetMapping("/{ID}")
-    public void deleteUser(@PathVariable long Id){
+    public void deleteUser(@PathVariable Long Id){
         userService.deleteUser(Id);
     }
     @GetMapping("/{Id},int")
-    public void updateLimit(@PathVariable long Id, int limit){
+    public void updateLimit(@PathVariable Long Id, int limit){
         userService.updateLimit(Id,limit);
     }
     @GetMapping("/{AppUser}")
@@ -33,11 +33,11 @@ public class UserController {
          return userService.newUser(user);
     }
     @GetMapping("/{Id},String")
-    public void changeName(@PathVariable long Id,String Name ){
+    public void changeName(@PathVariable Long Id,String Name ){
         userService.changeUserName(Id,Name);
     }
     @GetMapping("/{Id},String")
-    public void changeMail(@PathVariable long Id , String Name){
+    public void changeMail(@PathVariable Long Id , String Name){
         userService.changeMail(Id,Name);
     }
 }
