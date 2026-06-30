@@ -20,8 +20,9 @@ public class WordService {
    public WordList addWord(WordList word){
        return wordRepository.save(word);
    }
-   public void deleteWord(WordList word){
+   public void deleteWord(long Id){
+       WordList word=getWordById(Id);
        wordRepository.delete(word);
-       System.out.println(word + " has deleted from word list");
+       System.out.println(word + " has been deleted");
    }
 }

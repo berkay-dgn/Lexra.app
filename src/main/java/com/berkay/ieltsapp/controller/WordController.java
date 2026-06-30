@@ -29,8 +29,7 @@ public class WordController {
         return wordService.addWord(word);
     }
     @GetMapping("/{id}")
-    public void deleteWordById(@PathVariable long id){
+    public void deleteWord(long id){
         wordService.deleteWord(id);
     }
-
 }

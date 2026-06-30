@@ -29,7 +29,6 @@ public class WordList {
     public String Level() {return level;}
 
     public void setExampleSentence(String ex){this.exampleSentence=ex;}
-    public void setId(long id){this.Id=id;}
     public void setMeaning(String mean){this.meaning=mean;}
     public void setLevel(String diff){this.level=diff;}
 
