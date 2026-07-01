@@ -30,7 +30,7 @@ public class DailyWord {
         this.user=user;
 
     }
-    
+
     public void setWord(WordList word1){this.word=word1;}
     public void setCompleted(Boolean completed1){this.completed=completed1;}
     public void setUser(AppUser user1){this.user=user1;}
