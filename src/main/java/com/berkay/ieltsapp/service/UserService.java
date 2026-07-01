@@ -26,7 +26,7 @@ public class UserService {
     public AppUser newUser(AppUser user){
         return userRepo.save(user); // save in içinde entity olmalı
     }
-    public void updateLimit(long ID,int limit){
+    public void updateLimit(Long ID,int limit){
         AppUser user=findUser(ID);
         int oldLimit= user.getDailyLimit();
         user.setDailyLimit(limit);
@@ -35,14 +35,16 @@ public class UserService {
                 " your new limit is : " + limit);
 
     }
-    public void changeUserName(long ID,String Name){
+    public void changeUserName(Long ID,String Name){
         AppUser user=findUser(ID);
         user.setUserName(Name);
+        userRepo.save(user);
         System.out.println(" your username has been changed successfully");
     }
-    public void changeMail(long Id , String mail){
+    public void changeMail(Long Id , String mail){
         AppUser user= findUser(Id);
         user.setMail(mail);
+        userRepo.save(user);
         System.out.println(" your username has been changed successfully");
     }
 }

@@ -20,24 +20,24 @@ public class UserController {
     public AppUser findCustomer(@PathVariable Long ID){
         return userService.findUser(ID);
     }
-    @GetMapping("/{ID}")
+    @DeleteMapping("/{ID}")
     public void deleteUser(@PathVariable Long Id){
         userService.deleteUser(Id);
     }
-    @GetMapping("/{Id},int")
-    public void updateLimit(@PathVariable Long Id, int limit){
+    @PutMapping("/{Id}/limit/{limit}")
+    public void updateLimit(@PathVariable Long Id,@PathVariable int limit){
         userService.updateLimit(Id,limit);
     }
-    @GetMapping("/{AppUser}")
-    public AppUser newUser(@PathVariable AppUser user){
+    @PostMapping
+    public AppUser newUser(@RequestBody AppUser user){
          return userService.newUser(user);
     }
-    @GetMapping("/{Id},String")
-    public void changeName(@PathVariable Long Id,String Name ){
+    @PutMapping("/{Id}/username/{Name}")
+    public void changeName(@PathVariable Long Id,@PathVariable String Name ){
         userService.changeUserName(Id,Name);
     }
-    @GetMapping("/{Id},String")
-    public void changeMail(@PathVariable Long Id , String Name){
-        userService.changeMail(Id,Name);
+    @PutMapping("/{Id}/mail/{mail}")
+    public void changeMail(@PathVariable Long Id ,@ PathVariable String mail){
+        userService.changeMail(Id,mail);
     }
 }
