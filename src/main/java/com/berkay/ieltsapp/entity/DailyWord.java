@@ -1,6 +1,7 @@
 package com.berkay.ieltsapp.entity;
 import java.util.*;
 import java.time.LocalTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
@@ -14,19 +15,26 @@ public class DailyWord {
     private long ID;
     @ManyToOne
     private AppUser user;
-    private Date date;
+    private LocalDate date;
     @ManyToOne
     private WordList word;
-    private boolean compleated;
+    private boolean completed;
     public DailyWord(){
 
     }
-    public DailyWord(long ID ,AppUser user,Date date,WordList word,boolean compleated){
-        this.compleated=compleated;
-        this.ID=ID;
-        this.compleated=compleated;
+    public DailyWord(AppUser user,LocalDate date,WordList word,boolean compleated){
+        this.completed=compleated;
         this.date=date;
         this.word=word;
-
+        this.user=user;
     }
+
+    public void setWord(WordList word1){this.word=word1;}
+    public void setCompleted(Boolean completed1){this.completed=completed1;}
+    public void setUser(AppUser user1){this.user=user1;}
+
+    public LocalDate getDate() {return date ;}
+    public boolean isCompleted() {return completed;}
+    public long getID() {return ID;}
+    public WordList getWord() {return word;}
 }
