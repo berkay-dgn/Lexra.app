@@ -45,6 +45,6 @@ public class UserService {
         AppUser user= findUser(Id);
         user.setMail(mail);
         userRepo.save(user);
-        System.out.println(" your username has been changed successfully");
+        System.out.println(" your mail has been changed successfully");
     }
 }

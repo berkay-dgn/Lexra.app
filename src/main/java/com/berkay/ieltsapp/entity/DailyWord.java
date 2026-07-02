@@ -12,7 +12,7 @@ import org.hibernate.annotations.Generated;
 public class DailyWord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID;
+    private Long ID;
     @ManyToOne
     private AppUser user;
     private LocalDate date;
@@ -23,21 +23,23 @@ public class DailyWord {
     public DailyWord(){
 
     }
-    public DailyWord(AppUser user,LocalDate date,WordList word,boolean compleated){
-        this.completed=compleated;
+    public DailyWord(AppUser user,LocalDate date,WordList word,boolean completed){
+        this.completed=completed;
         this.date=date;
         this.word=word;
         this.user=user;
 
     }
 
-    public void setWord(WordList word1){this.word=word1;}
-    public void setCompleted(Boolean completed1){this.completed=completed1;}
-    public void setUser(AppUser user1){this.user=user1;}
+    public void setDate(LocalDate date) {this.date = date;}
+    public void setID(Long ID){this.ID=ID;}
+    public void setWord(WordList word){this.word=word;}
+    public void setCompleted(Boolean completed){this.completed=completed;}
+    public void setUser(AppUser user){this.user=user;}
 
     public LocalDate getDate() {return date ;}
     public boolean isCompleted() {return completed;}
-    public long getID() {return ID;}
+    public Long getID() {return ID;}
     public WordList getWord() {return word;}
     public AppUser getUser(){return user;}
 }

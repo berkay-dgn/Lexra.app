@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 public class AppUser {
     @Id // bunların çalışabilmesi için altalarında kesin bir değişken olması gerekir
     @GeneratedValue(strategy = GenerationType.IDENTITY)//long ıd gibi
-    private long Id;
-    private String Mail;
+    private Long Id;
+    private String mail;
     private String userName;
     private int dailyLimit;
     private String currentLevel;
@@ -17,9 +17,9 @@ public class AppUser {
     public AppUser(){
 
     }
-    public AppUser(long Id,String mail,String userName,int dailyLimit,String currentLevel,String pass){
+    public AppUser(Long Id,String mail,String userName,int dailyLimit,String currentLevel,String pass){
         this.Id=Id;
-        this.Mail=mail;
+        this.mail=mail;
         this.userName=userName;
         this.dailyLimit=dailyLimit;
         this.currentLevel=currentLevel;
@@ -27,8 +27,8 @@ public class AppUser {
     }
 
     public int getDailyLimit() {return dailyLimit;}
-    public String getMail() {return Mail;}
-    public long Id() {return Id;}
+    public String getMail() {return mail;}
+    public Long getId() {return Id;}
     public String userName() {return userName;}
     public String currentLevel() {return currentLevel;}
     public String  getPassword(){return password;}
@@ -36,6 +36,7 @@ public class AppUser {
     public void setCurrentLevel(String currentLevel) {this.currentLevel = currentLevel;}
     public void setDailyLimit(int dailyLimit){this.dailyLimit=dailyLimit;}
     public void setUserName(String user){this.userName=user;}
-    public void setMail(String mail){this.Mail=mail;}
-
+    public void setMail(String mail){this.mail=mail;}
+    public void setId(Long id){this.Id=id;}
+    public void setPassword(String pass){this.password=pass;}
 }

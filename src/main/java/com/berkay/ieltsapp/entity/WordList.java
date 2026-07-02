@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 public class WordList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private Long Id;
     private String word;
     private String exampleSentence;
     private String meaning;
@@ -16,23 +16,24 @@ public class WordList {
     public WordList(){
 
     }
-    public WordList(Long id,String meaning,String Level,String example,String word){
-        this.Id=id;
+    public WordList(Long Id,String meaning,String level,String exampleSentence,String word){
+        this.Id=Id;
         this.meaning=meaning;
         this.level=level;
-        this.exampleSentence=example;
+        this.exampleSentence=exampleSentence;
         this.word=word;
     }
     public String getWord(){return word; }
-    public long getId() {return Id;}
+    public Long getId() {return Id;}
     public String getExampleSentence() {return exampleSentence;}
     public String meaning() {return meaning;}
     public String Level() {return level;}
 
-    public void setExampleSentence(String ex){this.exampleSentence=ex;}
+    public void setExampleSentence(String exampleSentence){this.exampleSentence=exampleSentence;}
     public void setMeaning(String mean){this.meaning=mean;}
     public void setLevel(String diff){this.level=diff;}
     public void setWord(String word){this.word=word;}
+    public void setId(Long Id){this.Id=Id;}
 
 
 

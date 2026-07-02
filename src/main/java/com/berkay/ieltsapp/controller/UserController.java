@@ -20,13 +20,15 @@ public class UserController {
     public AppUser findCustomer(@PathVariable Long ID){
         return userService.findUser(ID);
     }
-    @DeleteMapping("/{ID}")
+    @DeleteMapping("/{Id}")
     public void deleteUser(@PathVariable Long Id){
+        System.out.println(" the user with ID : "+Id + " has been deleted");
         userService.deleteUser(Id);
     }
     @PutMapping("/{Id}/limit/{limit}")
     public void updateLimit(@PathVariable Long Id,@PathVariable int limit){
         userService.updateLimit(Id,limit);
+
     }
     @PostMapping
     public AppUser newUser(@RequestBody AppUser user){
