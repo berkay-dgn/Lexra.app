@@ -29,8 +29,8 @@ public class AppUser {
     public int getDailyLimit() {return dailyLimit;}
     public String getMail() {return mail;}
     public Long getId() {return Id;}
-    public String userName() {return userName;}
-    public String currentLevel() {return currentLevel;}
+    public String getUserName() {return userName;}
+    public String getCurrentLevel() {return currentLevel;}
     public String  getPassword(){return password;}
 
     public void setCurrentLevel(String currentLevel) {this.currentLevel = currentLevel;}

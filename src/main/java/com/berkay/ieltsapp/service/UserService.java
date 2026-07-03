@@ -21,7 +21,7 @@ public class UserService {
     public void deleteUser(long ID){
         AppUser user=findUser(ID);
         userRepo.delete(user);
-        System.out.println(user + " has been deleted !");
+        System.out.println(user.getUserName() + " has been deleted !");
     }
     public AppUser newUser(AppUser user){
         return userRepo.save(user); // save in içinde entity olmalı

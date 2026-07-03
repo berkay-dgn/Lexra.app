@@ -23,6 +23,5 @@ public class WordService {
    public void deleteWord(long Id){
        WordList word=getWordById(Id);
        wordRepository.delete(word);
-       System.out.println(word + " has been deleted");
    }
 }

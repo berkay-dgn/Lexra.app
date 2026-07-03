@@ -1,6 +1,5 @@
 package com.berkay.ieltsapp.entity;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Generated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,8 +22,9 @@ public class WordList {
         this.exampleSentence=exampleSentence;
         this.word=word;
     }
+    public String getMeaning(){return meaning;}
     public String getWord(){return word; }
-    public Long getId() {return Id;}
+    public Long getId(WordList word) {return Id;}
     public String getExampleSentence() {return exampleSentence;}
     public String meaning() {return meaning;}
     public String Level() {return level;}
