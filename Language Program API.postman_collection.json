@@ -1,0 +1,387 @@
+{
+  "info": {
+    "_postman_id": "3f386007-31a1-464f-92ef-176c4eeb6214",
+    "name": "Language Program API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56302366",
+    "_collection_link": "https://go.postman.co/collection/56302366-3f386007-31a1-464f-92ef-176c4eeb6214?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Daily Word",
+      "item": [
+        {
+          "name": "Uncompleted Words",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/API/DailyWord/3/uncompleted",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "DailyWord",
+                "3",
+                "uncompleted"
+              ]
+            },
+            "description": "This request shows uncompleted words"
+          },
+          "response": []
+        },
+        {
+          "name": "Completed Words",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/API/DailyWord/3/completed",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "DailyWord",
+                "3",
+                "completed"
+              ]
+            },
+            "description": "This request shows completed words which user has studied and it is returns them\r\nlike list "
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Completed",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/API/DailyWord/3/completed",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "DailyWord",
+                "3",
+                "completed"
+              ]
+            },
+            "description": "This request changes the words completed paramater if the user do not study the word it's boolean value is \"false\" and when you use this request it sets the boolean value \" true\" "
+          },
+          "response": []
+        },
+        {
+          "name": "Today Words",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/API/DailyWord/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "DailyWord",
+                "3"
+              ]
+            },
+            "description": "This request uses the user's ID and ıt found the user and show the today's word "
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "App User",
+      "item": [
+        {
+          "name": "Find User By Id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/API/User/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "User",
+                "1"
+              ]
+            },
+            "description": "This request shows the exacts user and it returns us the user's informations"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/API/User/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "User",
+                "2"
+              ]
+            },
+            "description": "this request deletes user with user's ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Limit",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/API/User/3/limit/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "User",
+                "3",
+                "limit",
+                "4"
+              ]
+            },
+            "description": "This requests changes user's daily limit"
+          },
+          "response": []
+        },
+        {
+          "name": "Change Name",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/API/User/3/username/serhat",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "User",
+                "3",
+                "username",
+                "serhat"
+              ]
+            },
+            "description": "This request changes user name using user's ID it find the exact user and change user's name"
+          },
+          "response": []
+        },
+        {
+          "name": "Change Mail",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/API/User/3/mail/arem@gmail",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "User",
+                "3",
+                "mail",
+                "arem@gmail"
+              ]
+            },
+            "description": "This request found the exact user with using user's ID and change it's mail"
+          },
+          "response": []
+        },
+        {
+          "name": "Add New User",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"mail\":\"dogan@\",\r\n    \"userName\":\"arem\",\r\n    \"dailyLimit\":10,\r\n    \"currentLevel\":\"B1\",\r\n    \"password\":\"b1dgn33\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/API/User",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "User"
+              ]
+            },
+            "description": "This request could add new user "
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Word",
+      "item": [
+        {
+          "name": "Find Word With ID",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/API/words/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "words",
+                "3"
+              ]
+            },
+            "description": "this request find the user's word with using his ID"
+          },
+          "response": []
+        },
+        {
+          "name": "New Word",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"word\":\"redemption\",\r\n    \"meaning\":\"kurtuluş\",\r\n    \"level\":\"B2\",\r\n     \"exampleSentence\":\"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/API/words",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "API",
+                "words"
+              ]
+            },
+            "description": "This request add new word in the word list"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
