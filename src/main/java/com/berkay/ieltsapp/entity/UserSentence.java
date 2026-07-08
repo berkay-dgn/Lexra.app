@@ -41,10 +41,10 @@ public class UserSentence {
     public void setCreatedAt(LocalDate createdAt){this.createdAt=createdAt;}
     public void setSentence(String sentence){this.sentence=sentence;}
 
-    public AppUser getUser(AppUser user){return user; }
-    public Long getId(Long Id){return Id;}
-    public DailyWord getDailyWord(DailyWord dailyWord){return dailyWord;}
-    public boolean getCorrect(Boolean isCorrect){return isCorrect;}
-    public LocalDate getCreatedAt(LocalDate createdAt){return createdAt;}
-    public String getSentence(String sentence){return sentence;}
+    public AppUser getUser(){return user; }
+    public Long getId(){return Id;}
+    public DailyWord getDailyWord(){return dailyWord;}
+    public boolean getCorrect(){return isCorrect;}
+    public LocalDate getCreatedAt(){return createdAt;}
+    public String getSentence(){return sentence;}
 }
