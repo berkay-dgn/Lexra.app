@@ -11,5 +11,4 @@ public interface UserSentenceRepo extends JpaRepository<UserSentence,Long> {
     long countByUserAndCorrect(AppUser user,boolean correct);
     List<UserSentence>findByDailyWordAndCorrect(DailyWord word,boolean correct);
 
-
 }

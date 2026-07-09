@@ -20,31 +20,31 @@ public class UserSentence {
     private AppUser user;
     @ManyToOne // kullanıcı yanlış cümle yazarsa düzeltme imkanın verebilmek için ManyToOne kullandım
     private DailyWord dailyWord;
-    private boolean isCorrect;
+    private boolean correct;
     private LocalDate createdAt;
     private String sentence;
     public UserSentence(){
 
     }
     public UserSentence(AppUser user,DailyWord dailyWord,String sentence
-            ,boolean isCorrect,LocalDate createdAt){
+            ,boolean correct,LocalDate createdAt){
         this.user=user;
         this.dailyWord=dailyWord;
-        this.isCorrect=isCorrect;
+        this.correct=correct;
         this.createdAt=createdAt;
         this.sentence=sentence;
     }
     public void setUser(AppUser user){this.user=user;}
     public void setId(Long Id){this.Id=Id;}
     public void setDailyWord(DailyWord dailyWord){this.dailyWord=dailyWord;}
-    public void setCorrect(boolean isCorrect){this.isCorrect=isCorrect;}
+    public void setCorrect(boolean isCorrect){this.correct=correct;}
     public void setCreatedAt(LocalDate createdAt){this.createdAt=createdAt;}
     public void setSentence(String sentence){this.sentence=sentence;}
 
     public AppUser getUser(){return user; }
     public Long getId(){return Id;}
     public DailyWord getDailyWord(){return dailyWord;}
-    public boolean getCorrect(){return isCorrect;}
+    public boolean getCorrect(){return correct;}
     public LocalDate getCreatedAt(){return createdAt;}
     public String getSentence(){return sentence;}
 }

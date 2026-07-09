@@ -31,8 +31,8 @@ public class UserService {
         int oldLimit= user.getDailyLimit();
         user.setDailyLimit(limit);
         userRepo.save(user);
-        System.out.println(" your last limit was :  " +oldLimit+" your limit has been changed "+
-                " your new limit is : " + limit);
+        System.out.println(" your last limit was :  " +oldLimit+" , "+" your limit has been changed ,"
+                + " your new limit is : " + limit);
 
     }
     public void changeUserName(Long ID,String Name){
