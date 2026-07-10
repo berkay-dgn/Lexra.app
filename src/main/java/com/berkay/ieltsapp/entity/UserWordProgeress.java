@@ -18,8 +18,8 @@ public class UserWordProgeress {
     private AppUser user;
     @ManyToOne
     private WordList word;
-    private Long correctCount;
-    private Long wrongCount;
+    private long correctCount;
+    private long wrongCount;
     private LocalDate lastReviewAt;
     private LocalDate nextReviewAt;
     private boolean learned;
@@ -27,10 +27,9 @@ public class UserWordProgeress {
     public UserWordProgeress(){
 
     }
-    public UserWordProgeress(Long progressId,AppUser user,WordList word,boolean learned
-                             ,Long correctCount,LocalDate lastReviewAt,LocalDate nextReviewAt
+    public UserWordProgeress(AppUser user,WordList word,boolean learned
+            ,long correctCount,long wrongCount,LocalDate lastReviewAt,LocalDate nextReviewAt
             ,boolean reviewLater){
-        this.progressId=progressId;
         this.user=user;
         this.word=word;
         this.learned=learned;
@@ -38,13 +37,14 @@ public class UserWordProgeress {
         this.correctCount=correctCount;
         this.lastReviewAt=lastReviewAt;
         this.nextReviewAt=nextReviewAt;
+        this.wrongCount=wrongCount;
     }
-
+    public long getWrongCount(){return wrongCount;}
     public Long getProgressId(){return progressId;}
     public AppUser getUser(){return user;}
     public WordList getWord(){return word;}
     public boolean getLearned(){return learned;}
-    public Long getCorrectCount(){return correctCount;}
+    public long getCorrectCount(){return correctCount;}
     public LocalDate getLastReviewAt(){return lastReviewAt;}
     public LocalDate getNextReviewAt(){return nextReviewAt;}
     public boolean getReviewLater(){return reviewLater;}
@@ -54,8 +54,8 @@ public class UserWordProgeress {
     public void setUser(AppUser user){this.user=user;}
     public void setWord(WordList word){this.word=word;}
     public void setLearned(boolean learned){this.learned=learned;}
-    public void setCorrectCount(Long correctCount){this.correctCount=correctCount;}
-    public void setWrongCount(Long wrongCount){this.wrongCount=wrongCount;}
+    public void setCorrectCount(long correctCount){this.correctCount=correctCount;}
+    public void setWrongCount(long wrongCount){this.wrongCount=wrongCount;}
     public void setReviewLater(boolean reviewLater){this.reviewLater=reviewLater;}
     public void setLastReviewAt(LocalDate lastReviewAt) {this.lastReviewAt=lastReviewAt;}
     public void setNextReviewAt(LocalDate nextReviewAt){this.nextReviewAt=nextReviewAt;}

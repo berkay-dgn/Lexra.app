@@ -1,10 +1,6 @@
 package com.berkay.ieltsapp.service;
-import com.berkay.ieltsapp.entity.AppUser;
-import com.berkay.ieltsapp.entity.DailyWord;
-import com.berkay.ieltsapp.entity.WordList;
-import com.berkay.ieltsapp.repository.DailyWordRepository;
-import com.berkay.ieltsapp.repository.UserRepo;
-import com.berkay.ieltsapp.repository.WordRepository;
+import com.berkay.ieltsapp.entity.*;
+import com.berkay.ieltsapp.repository.*;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
