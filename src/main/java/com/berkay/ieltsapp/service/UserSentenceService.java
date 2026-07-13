@@ -4,9 +4,11 @@ import com.berkay.ieltsapp.entity.*;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserSentenceService {
+    private final DailyWord dailyWord;
     private final DailyWordService dailyService;
     private final DailyWordRepository wordRepository;
     private final UserService userService;
@@ -14,10 +16,14 @@ public class UserSentenceService {
     private final UserRepo userRepo;
     private final UserSentenceRepo userSentenceRepo;
     private final WordRepository wordRepo;
+    private final UserWordProgeressService progeressService;
+    private final UserWordProgeressRepo progeressRepo;
+    private final UserWordProgeress progeress;
     public UserSentenceService(UserService userService,WordService wordService
             ,UserRepo userRepo,UserSentenceRepo userSentenceRepo
             ,WordRepository wordRepo,DailyWordService dailyService
-            ,DailyWordRepository wordRepository){
+            ,DailyWordRepository wordRepository,UserWordProgeressService progeressService
+    ,UserWordProgeressRepo progeressRepo,UserWordProgeress progeress,DailyWord dailyWord){
         this.userRepo=userRepo;
         this.userService=userService;
         this.wordService=wordService;
@@ -25,6 +31,10 @@ public class UserSentenceService {
         this.userSentenceRepo=userSentenceRepo;
         this.dailyService=dailyService;
         this.wordRepository=wordRepository;
+        this.progeressService=progeressService;
+        this.progeressRepo=progeressRepo;
+        this.progeress=progeress;
+        this.dailyWord=dailyWord;
     }
     // kullanıcının yazdığı örnek cümleyi database kaydeder
     public UserSentence submitSentence(Long daily_Id,String sentence){
@@ -33,9 +43,12 @@ public class UserSentenceService {
         AppUser user=dailyWord.getUser();
         WordList word=dailyWord.getWord();
         String target_Word=word.getWord();
-        boolean is_contain=sentence.toLowerCase().contains(target_Word.toLowerCase());
+        checkWord(daily_Id, sentence);
         UserSentence sentence1=new UserSentence(user,dailyWord,sentence,true,LocalDate.now());
+        progeressService.findOrCreateProgeress(user,word);
         return userSentenceRepo.save(sentence1);
+
+
     }
     public List<UserSentence> showAllSentence(){
         return userSentenceRepo.findAll();
@@ -66,6 +79,13 @@ public class UserSentenceService {
         +" "+sentence);
         userSentenceRepo.delete(sentence);
         System.out.println(" your sentence has been deleted ");
+    }
+    private boolean checkWord(Long daily_Id,String Sentence){
+        AppUser user=dailyWord.getUser();
+        WordList word=dailyWord.getWord();
+        String targetWord=word.getWord();
+        boolean isContain=Sentence.toLowerCase().contains(targetWord.toLowerCase());
+        return isContain;
     }
 
 }
