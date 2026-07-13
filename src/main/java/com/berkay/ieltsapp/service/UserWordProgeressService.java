@@ -1,7 +1,6 @@
 package com.berkay.ieltsapp.service;
 import com.berkay.ieltsapp.entity.*;
 import com.berkay.ieltsapp.repository.*;
-
 import java.time.LocalDate;
 import java.util.*;
 import java.util.Optional;
@@ -67,6 +66,15 @@ public class UserWordProgeressService {
             addReviewList(user,word);
         }
     }
+    public void removeWordFromReviewList(AppUser user,WordList word){
+        UserWordProgeress progeress=progeressRepo.findByUserAndWord(user,word)
+                .orElseThrow(()->new RuntimeException("Progeress not found !"));
+        progeress.setReviewLater(false);
+        progeressRepo.save(progeress);
+        System.out.println(" The progeress has been deleted from Review List ");
+
+    }
+
 
 
 }
