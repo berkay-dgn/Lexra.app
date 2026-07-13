@@ -2,7 +2,7 @@ package com.berkay.ieltsapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDate;
+import java.time.LocalDate.*;
 
 // dto nun içinde entity olmamalı
 public class UserSentenceRequest {
@@ -14,7 +14,7 @@ public class UserSentenceRequest {
     private Long userId;
     @JsonProperty("isCorrect")
     private boolean isCorrect;
-    @JsonProperty("date")
+    @JsonProperty("date")// bu ve isCorrect kısmı gereksiz bunları silemek lazım
     private String date;
 
     // bu üst kısım postmanden nasıl alacağımı göstemek için yazıldı o yüzden hiç

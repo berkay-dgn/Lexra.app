@@ -2,18 +2,15 @@ package com.berkay.ieltsapp.service;
 import com.berkay.ieltsapp.entity.*;
 import com.berkay.ieltsapp.repository.*;
 import java.time.LocalDate;
-import java.util.*;
 import java.util.Optional;
 import java.util.List;
 import org.springframework.stereotype.Service;
 @Service
 public class UserWordProgeressService {
     private final UserWordProgeressRepo progeressRepo;
-    private final UserWordProgeress wordProgeress;
-    public UserWordProgeressService(UserWordProgeressRepo progeressRepo
-            ,UserWordProgeress wordProgeress ){
+    private  UserWordProgeress wordProgeress;
+    public UserWordProgeressService(UserWordProgeressRepo progeressRepo){
         this.progeressRepo=progeressRepo;
-        this.wordProgeress=wordProgeress;
     }
     public List<UserWordProgeress> showAllProgeress(){
         return progeressRepo.findAll();

@@ -2,10 +2,9 @@ package com.berkay.ieltsapp.dto;
 import com.berkay.ieltsapp.entity.*;
 
 import java.time.LocalDate;
-import java.time.LocalTime.*;
-import java.time.LocalDateTime.*;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-public class UserResponseRequest {
+public class UserSentenceResponse {
     @JsonProperty("sentence")
     private String sentence;
     @JsonProperty("correct")
@@ -15,9 +14,9 @@ public class UserResponseRequest {
     @JsonProperty("dailyWord")
     private DailyWord dailyWord;
     // bu response request class ı ise bizim json na gönderdiğimizin kısmı
-    public UserResponseRequest(){}
-    public UserResponseRequest(String sentence,boolean correct
-            ,LocalDate createdAt,DailyWord dailyWord){
+    public UserSentenceResponse(){}
+    public UserSentenceResponse(String sentence, boolean correct
+            , LocalDate createdAt, DailyWord dailyWord){
         this.sentence=sentence;
         this.correct=correct;
         this.createdAt=createdAt;

@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public class UserSentenceService {
-    private final DailyWord dailyWord;
+    private DailyWord dailyWord;
     private final DailyWordService dailyService;
     private final DailyWordRepository wordRepository;
     private final UserService userService;
@@ -18,12 +18,12 @@ public class UserSentenceService {
     private final WordRepository wordRepo;
     private final UserWordProgeressService progeressService;
     private final UserWordProgeressRepo progeressRepo;
-    private final UserWordProgeress progeress;
+
     public UserSentenceService(UserService userService,WordService wordService
             ,UserRepo userRepo,UserSentenceRepo userSentenceRepo
             ,WordRepository wordRepo,DailyWordService dailyService
             ,DailyWordRepository wordRepository,UserWordProgeressService progeressService
-    ,UserWordProgeressRepo progeressRepo,UserWordProgeress progeress,DailyWord dailyWord){
+    ,UserWordProgeressRepo progeressRepo){
         this.userRepo=userRepo;
         this.userService=userService;
         this.wordService=wordService;
@@ -33,8 +33,6 @@ public class UserSentenceService {
         this.wordRepository=wordRepository;
         this.progeressService=progeressService;
         this.progeressRepo=progeressRepo;
-        this.progeress=progeress;
-        this.dailyWord=dailyWord;
     }
     // kullanıcının yazdığı örnek cümleyi database kaydeder
     public UserSentence submitSentence(Long daily_Id,String sentence){
