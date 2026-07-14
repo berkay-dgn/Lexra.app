@@ -40,7 +40,7 @@ public class UserSentenceService {
                 orElseThrow(()->new RuntimeException("this word does not exist"));
         AppUser user=dailyWord.getUser();
         WordList word=dailyWord.getWord();
-        String target_Word=word.getWord();
+        String targetWord=word.getWord();
         checkWord(daily_Id, sentence);
         UserSentence sentence1=new UserSentence(user,dailyWord,sentence,true,LocalDate.now());
         progeressService.findOrCreateProgeress(user,word);

@@ -17,7 +17,8 @@ public class AppUser {
     public AppUser(){
 
     }
-    public AppUser(Long Id,String mail,String userName,int dailyLimit,String currentLevel,String pass){
+    public AppUser(Long Id,String mail,String userName,int dailyLimit
+            ,String currentLevel,String pass){
         this.Id=Id;
         this.mail=mail;
         this.userName=userName;
