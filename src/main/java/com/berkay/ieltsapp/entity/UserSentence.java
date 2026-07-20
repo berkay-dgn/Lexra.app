@@ -21,12 +21,17 @@ public class UserSentence {
     private DailyWord dailyWord;
     private boolean correct;
     private LocalDate createdAt;
+    @Column(length=1000)
     private String sentence;
+    @Column(length = 1000)
+    private String feedback;
+    @Column(length=1000)
+    private String correctedSentence;
     public UserSentence(){
 
     }
     public UserSentence(AppUser user,DailyWord dailyWord,String sentence
-            ,boolean correct,LocalDate createdAt){
+            ,boolean correct,LocalDate createdAt ){
         this.user=user;
         this.dailyWord=dailyWord;
         this.correct=correct;
@@ -39,6 +44,10 @@ public class UserSentence {
     public void setCorrect(boolean isCorrect){this.correct=correct;}
     public void setCreatedAt(LocalDate createdAt){this.createdAt=createdAt;}
     public void setSentence(String sentence){this.sentence=sentence;}
+    public void setFeedback(String feedback){this.feedback=feedback;}
+    public void setCorrectedSentence(String correctedSentence){
+        this.correctedSentence=correctedSentence;
+    }
 
     public AppUser getUser(){return user; }
     public Long getId(){return Id;}
@@ -46,4 +55,6 @@ public class UserSentence {
     public boolean getCorrect(){return correct;}
     public LocalDate getCreatedAt(){return createdAt;}
     public String getSentence(){return sentence;}
+    public String getFeedback(){return feedback;}
+    public String getCorrectedSentence(){return correctedSentence;}
 }
