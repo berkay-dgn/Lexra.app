@@ -1,6 +1,8 @@
 package com.berkay.ieltsapp.service;
+import com.berkay.ieltsapp.dto.AiSentenceResponse;
 import com.berkay.ieltsapp.repository.*;
 import com.berkay.ieltsapp.entity.*;
+import com.berkay.ieltsapp.dto.*;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class UserSentenceService {
-    private DailyWord dailyWord;
+    private  AiSentenceService aiService;
     private final DailyWordService dailyService;
     private final DailyWordRepository wordRepository;
     private final UserService userService;
@@ -23,7 +25,8 @@ public class UserSentenceService {
             ,UserRepo userRepo,UserSentenceRepo userSentenceRepo
             ,WordRepository wordRepo,DailyWordService dailyService
             ,DailyWordRepository wordRepository,UserWordProgeressService progeressService
-    ,UserWordProgeressRepo progeressRepo){
+    ,UserWordProgeressRepo progeressRepo,AiSentenceService aiService){
+        this.aiService=aiService;
         this.userRepo=userRepo;
         this.userService=userService;
         this.wordService=wordService;
@@ -35,32 +38,42 @@ public class UserSentenceService {
         this.progeressRepo=progeressRepo;
     }
     // kullanıcının yazdığı örnek cümleyi database kaydeder
-    public UserSentence submitSentence(Long daily_Id,String sentence){
+    public UserSentenceResponse submitSentence(Long daily_Id,String sentence){
         DailyWord dailyWord=wordRepository.findById(daily_Id).
                 orElseThrow(()->new RuntimeException("this word does not exist"));
         AppUser user=dailyWord.getUser();
         WordList word=dailyWord.getWord();
         String targetWord=word.getWord();
+        String userLevel=user.getCurrentLevel();
         checkWord(daily_Id, sentence);
-        UserSentence sentence1=new UserSentence(user,dailyWord,sentence,true,LocalDate.now());
+        AiSentenceResponse response= aiService.checkUserSentenceWithAi(targetWord
+                ,sentence,userLevel);
+        String feedback=response.getFeedback();
+        String correctedSentence=response.getCorrectedSentence();
+        UserSentence sentence1=new UserSentence(user,dailyWord
+                ,sentence, response.getCorrect(), LocalDate.now());
+        sentence1.setCorrectedSentence(correctedSentence);
+        sentence1.setFeedback(feedback);
         progeressService.findOrCreateProgeress(user,word);
-        return userSentenceRepo.save(sentence1);
-
+        UserSentence saved=userSentenceRepo.save(sentence1);
+        UserSentenceResponse response1=new UserSentenceResponse(sentence, response.getCorrect()
+                ,sentence1.getCreatedAt(),sentence1.getFeedback(),sentence1.getCorrectedSentence() );
+        return response1;
 
     }
     public List<UserSentence> showAllSentence(){
         return userSentenceRepo.findAll();
     }
     // kullanıcın doğru yaptığı örnek cümleleri gösterir
-    public List<UserSentence> showCorrectSentence(AppUser user, boolean correct){
+    public List<UserSentence> showCorrectSentence(AppUser user, Boolean correct){
         return userSentenceRepo.findByUserAndCorrect(user,true);
     }
     // kullanıcının yanlış yazdığı örnek cümleri gösterme
-    public List<UserSentence> showFalseSentence(AppUser user, boolean incorrect){
+    public List<UserSentence> showFalseSentence(AppUser user, Boolean incorrect){
         return userSentenceRepo.findByUserAndCorrect(user,false);
     }
     // kullanıcının yazdığı doğru kelime sayısnın hesaplar
-    public long correctWordCount(AppUser user,boolean correct){
+    public long correctWordCount(AppUser user,Boolean correct){
         return userSentenceRepo.countByUserAndCorrect(user,true);
     }
     /* kullanıcın doğru sentence sayısının ve toplam yazdığı sentence sayısnı kullanarak
@@ -79,6 +92,8 @@ public class UserSentenceService {
         System.out.println(" your sentence has been deleted ");
     }
     private boolean checkWord(Long daily_Id,String Sentence){
+        DailyWord dailyWord=wordRepository.findById(daily_Id).orElseThrow(()
+                ->new RuntimeException("Word does not exist"));
         AppUser user=dailyWord.getUser();
         WordList word=dailyWord.getWord();
         String targetWord=word.getWord();
