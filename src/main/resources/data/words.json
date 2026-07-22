@@ -1,0 +1,21 @@
+[
+  {
+    "word":"able",
+    "exampleSentence": "I able to do push up",
+    "level": "A2",
+    "meaning": "yapabilmek"
+
+  },
+  {
+    "word": "chain",
+    "exampleSentence": "He used old chain for his car",
+    "level":"B1",
+    "meaning": "zincir"
+  },
+  {
+    "word": "obsession",
+    "exampleSentence": "The obsession movie changed her life , she achieved fame",
+    "level": "B2",
+    "meaning":"takıntı"
+  }
+]
