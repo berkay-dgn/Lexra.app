@@ -4,13 +4,12 @@ import com.berkay.ieltsapp.repository.*;
 import com.berkay.ieltsapp.entity.*;
 import com.berkay.ieltsapp.dto.*;
 import org.springframework.stereotype.Service;
-import java.time.LocalDate;
+
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserSentenceService {
-    private  AiSentenceService aiService;
+    private final AiSentenceService aiService;
     private final DailyWordService dailyService;
     private final DailyWordRepository wordRepository;
     private final UserService userService;
@@ -51,13 +50,14 @@ public class UserSentenceService {
         String feedback=response.getFeedback();
         String correctedSentence=response.getCorrectedSentence();
         UserSentence sentence1=new UserSentence(user,dailyWord
-                ,sentence, response.getCorrect(), LocalDate.now());
+                ,sentence, response.getCorrect());
         sentence1.setCorrectedSentence(correctedSentence);
         sentence1.setFeedback(feedback);
         progeressService.findOrCreateProgeress(user,word);
         UserSentence saved=userSentenceRepo.save(sentence1);
-        UserSentenceResponse response1=new UserSentenceResponse(sentence, response.getCorrect()
-                ,sentence1.getCreatedAt(),sentence1.getFeedback(),sentence1.getCorrectedSentence() );
+        UserSentenceResponse response1=new UserSentenceResponse(sentence, response.getCorrect(),
+                saved.getCreatedAt(),saved.getFeedback(),saved.getCorrectedSentence() );
+
         return response1;
 
     }
