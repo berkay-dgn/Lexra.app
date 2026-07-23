@@ -1,0 +1,23 @@
+[
+  {
+    "mail": "dogan@12",
+    "userName":"arem",
+    "dailyLimit": 3,
+    "currentLevel": "B1",
+    "password": "Br1.45gb"
+  },
+  {
+    "mail": "berkay@33",
+    "userName": "user1",
+    "dailyLimit": 5,
+    "currentLevel": "B2",
+    "password": "V.1fk55t"
+  },
+  {
+    "mail": "berk@12",
+    "userName": "user2",
+    "dailyLimit": 7,
+    "currentLevel": "A1",
+    "password": "G.33tdCll"
+  }
+]
